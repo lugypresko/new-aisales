@@ -1,0 +1,59 @@
+SALES AI MVP - TEST AUDIO TRANSCRIPT
+============================================================
+
+INSTRUCTIONS:
+1. Read this script aloud at a natural pace
+2. Pause for the specified duration after each line
+3. Record as 16kHz mono WAV and save to: data/test_audio.wav
+4. Total duration should be ~5 minutes
+
+============================================================
+
+[7.6s] Rep: Hi there! Thanks for taking the time to chat today. How are you doing?
+    → PAUSE for 2.0s
+
+[12.3s] Prospect: Good, thanks. So tell me about your platform.
+    → PAUSE for 1.5s
+
+[17.3s] Rep: Absolutely. We help teams collaborate more effectively with AI-powered workflows.
+    → PAUSE for 1.0s
+
+[22.2s] Prospect: Interesting. How much does it cost?
+    → PAUSE for 2.5s
+
+[28.1s] Rep: Great question. We have two main tiers to fit different needs.
+    → PAUSE for 1.5s
+
+[34.1s] Prospect: Okay. And is your platform secure? We handle sensitive data.
+    → PAUSE for 2.0s
+
+[40.4s] Rep: Security is our top priority. Let me walk you through our approach.
+    → PAUSE for 1.5s
+
+[46.5s] Prospect: We're currently using Competitor X. Why should we switch?
+    → PAUSE for 2.5s
+
+[52.3s] Rep: That's a fair question. Many of our customers came from Competitor X.
+    → PAUSE for 1.0s
+
+[57.9s] Prospect: Hmm. Can you send me a proposal to review?
+    → PAUSE for 2.0s
+
+[63.8s] Rep: Absolutely! I can get that to you by end of day.
+    → PAUSE for 1.5s
+
+[69.0s] Prospect: Perfect. Let's schedule a follow-up for next week.
+    → PAUSE for 2.0s
+
+[74.4s] Rep: Sounds great. I'll send over some time options. Thanks so much!
+    → PAUSE for 1.0s
+
+============================================================
+TOTAL ESTIMATED DURATION: 74.4 seconds (~1.2 minutes)
+
+KEY TRIGGER MOMENTS (for validation):
+- ~15s: 'How much does it cost?' (Pricing)
+- ~35s: 'Is your platform secure?' (Technical)
+- ~55s: 'Why should we switch?' (Competitors)
+- ~75s: 'Can you send me a proposal?' (NextSteps)
+- ~90s: 'Let's schedule a follow-up' (NextSteps)

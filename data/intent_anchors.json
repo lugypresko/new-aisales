@@ -1,0 +1,46 @@
+[
+    {
+        "intent": "Pricing",
+        "anchor_texts": [
+            "How much does this cost?",
+            "What's the price?",
+            "That's too expensive",
+            "Do you have discounts?",
+            "What's your pricing model?"
+        ],
+        "description": "Questions about cost, pricing, discounts, and budget concerns"
+    },
+    {
+        "intent": "Technical",
+        "anchor_texts": [
+            "Is this secure?",
+            "How does it work technically?",
+            "What about data privacy?",
+            "Does it integrate with our systems?",
+            "What's the uptime guarantee?"
+        ],
+        "description": "Technical questions about security, integrations, implementation, and reliability"
+    },
+    {
+        "intent": "Competitors",
+        "anchor_texts": [
+            "How are you different from your competitors?",
+            "We're using another solution already",
+            "Why shouldn't we build this ourselves?",
+            "What makes you better?",
+            "We looked at other options"
+        ],
+        "description": "Competitive positioning, differentiation, and comparison questions"
+    },
+    {
+        "intent": "NextSteps",
+        "anchor_texts": [
+            "Can you send me a proposal?",
+            "When can we start?",
+            "What are the next steps?",
+            "I need to talk to my team",
+            "Let's schedule a follow-up"
+        ],
+        "description": "Closing signals, requests for proposals, scheduling, and progression questions"
+    }
+]

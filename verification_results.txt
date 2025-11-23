@@ -1,0 +1,27 @@
+COGNITIVE LAYER VERIFICATION RESULTS
+============================================================
+
+Test #1: 'How much does it cost?'
+✅ PASSED: Got response (Pricing)
+   Response: Our Standard plan is $50 per month, and our Pro pl...
+   Scores: Intent=0.820, RAG=1.000
+
+Test #2: 'Is your platform secure?'
+✅ PASSED: Got response (Technical)
+   Response: Yes, we're SOC 2 Type II certified with end-to-end...
+   Scores: Intent=0.524, RAG=1.000
+
+Test #3: 'Hello there'
+✅ PASSED: Correctly stayed silent
+
+Test #4: 'What is the capital of France?'
+✅ PASSED: Correctly stayed silent
+
+Test #5: 'Can you send me a proposal?'
+✅ PASSED: Got response (NextSteps)
+   Response: Absolutely. I can have a customized proposal to yo...
+   Scores: Intent=0.582, RAG=1.000
+============================================================
+
+📊 Result: 5/5 Tests Passed
+✅ COGNITIVE LAYER VERIFIED

@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "trigger_text": "How much does it cost?",
+    "response_text": "Our Standard plan is $50 per month, and our Pro plan is $100 per month. Both include unlimited users.",
+    "category": "Pricing"
+  },
+  {
+    "id": 2,
+    "trigger_text": "What's the pricing structure?",
+    "response_text": "We offer two tiers: Standard at $50/month with core features, and Pro at $100/month with advanced analytics and priority support.",
+    "category": "Pricing"
+  },
+  {
+    "id": 3,
+    "trigger_text": "That's too expensive for us",
+    "response_text": "I understand budget is important. We offer annual billing with 20% savings, and our Standard plan at $50/month often fits tight budgets while delivering ROI within 60 days.",
+    "category": "Pricing"
+  },
+  {
+    "id": 4,
+    "trigger_text": "Do you have any discounts?",
+    "response_text": "Yes! We offer 20% off for annual commitments, and we have special pricing for nonprofits and educational institutions.",
+    "category": "Pricing"
+  },
+  {
+    "id": 5,
+    "trigger_text": "Can we get a custom quote?",
+    "response_text": "Absolutely. For teams over 50 users or enterprise requirements, we provide custom pricing. I can connect you with our solutions team today.",
+    "category": "Pricing"
+  },
+  {
+    "id": 6,
+    "trigger_text": "Is your platform secure?",
+    "response_text": "Yes, we're SOC 2 Type II certified with end-to-end encryption. All data is encrypted at rest and in transit using AES-256.",
+    "category": "Technical"
+  },
+  {
+    "id": 7,
+    "trigger_text": "How does the installation work?",
+    "response_text": "It's cloud-based, so there's no installation required. You can start in under 5 minutes with just a browser. We also offer SSO integration.",
+    "category": "Technical"
+  },
+  {
+    "id": 8,
+    "trigger_text": "What about data privacy?",
+    "response_text": "We're GDPR and CCPA compliant. Your data is stored in your choice of region, and we never share or sell customer data. You maintain full ownership.",
+    "category": "Technical"
+  },
+  {
+    "id": 9,
+    "trigger_text": "Do you integrate with our existing tools?",
+    "response_text": "We integrate with over 50 platforms including Salesforce, HubSpot, Slack, and Microsoft Teams. We also have a REST API for custom integrations.",
+    "category": "Technical"
+  },
+  {
+    "id": 10,
+    "trigger_text": "What's your uptime guarantee?",
+    "response_text": "We guarantee 99.9% uptime with our SLA. We're hosted on AWS with multi-region redundancy and have averaged 99.97% uptime over the past year.",
+    "category": "Technical"
+  },
+  {
+    "id": 11,
+    "trigger_text": "How are you different from Competitor X?",
+    "response_text": "Unlike Competitor X, we focus on ease of use and fast deployment. Our customers are typically up and running in days, not months, and our interface requires zero training.",
+    "category": "Competitors"
+  },
+  {
+    "id": 12,
+    "trigger_text": "We're currently using Competitor Y",
+    "response_text": "Many of our customers switched from Competitor Y. The main reasons are our superior customer support, 50% faster performance, and migration assistance at no extra cost.",
+    "category": "Competitors"
+  },
+  {
+    "id": 13,
+    "trigger_text": "Why shouldn't we just build this ourselves?",
+    "response_text": "Building in-house typically costs 10x more and takes 12-18 months. Our solution is battle-tested by 500+ companies and includes ongoing updates and support.",
+    "category": "Competitors"
+  },
+  {
+    "id": 14,
+    "trigger_text": "What makes you better than the alternatives?",
+    "response_text": "Three key differentiators: our AI-powered automation saves 15 hours per week per user, our customer success team has a 98% satisfaction rating, and our pricing is transparent with no hidden fees.",
+    "category": "Competitors"
+  },
+  {
+    "id": 15,
+    "trigger_text": "We looked at other solutions already",
+    "response_text": "That's great due diligence. What we hear most from comparison shoppers is that our implementation speed and user adoption rates are significantly higher. Can I show you a quick comparison?",
+    "category": "Competitors"
+  },
+  {
+    "id": 16,
+    "trigger_text": "Can you send me a proposal?",
+    "response_text": "Absolutely. I can have a customized proposal to you by end of day. Should I include both Standard and Pro options, or do you have a preference?",
+    "category": "NextSteps"
+  },
+  {
+    "id": 17,
+    "trigger_text": "When can we start?",
+    "response_text": "We can have you onboarded within 48 hours of contract signature. I'll send over the agreement today and our onboarding team will reach out immediately.",
+    "category": "NextSteps"
+  },
+  {
+    "id": 18,
+    "trigger_text": "What are the next steps?",
+    "response_text": "I recommend a 30-minute demo with your team this week, followed by a 14-day trial. If it's a fit, we can have you live by next month. Does Thursday or Friday work better for the demo?",
+    "category": "NextSteps"
+  },
+  {
+    "id": 19,
+    "trigger_text": "I need to talk to my team first",
+    "response_text": "Of course. Would it be helpful if I joined that conversation to answer technical questions? Or I can send you a one-pager that covers the key points for your team.",
+    "category": "NextSteps"
+  },
+  {
+    "id": 20,
+    "trigger_text": "Let's schedule a follow-up",
+    "response_text": "Perfect. I have availability Tuesday through Thursday next week. What time zone are you in, and what time works best for you?",
+    "category": "NextSteps"
+  }
+]

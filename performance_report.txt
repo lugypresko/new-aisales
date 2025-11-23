@@ -1,0 +1,21 @@
+PERFORMANCE VALIDATION REPORT
+============================================================
+✅ Case #1: 'How much does it cost?' -> SPOKEN (124.6ms)
+✅ Case #2: 'Is it secure?' -> SPOKEN (76.5ms)
+✅ Case #3: 'Send me a proposal' -> SPOKEN (58.5ms)
+✅ Case #4: 'Who are your competitors?' -> SPOKEN (72.4ms)
+✅ Case #5: 'Hello' -> SILENT (32.1ms)
+✅ Case #6: 'Can you hear me?' -> SILENT (35.8ms)
+✅ Case #7: 'Just checking in' -> SILENT (61.9ms)
+✅ Case #8: 'Um, ah, okay' -> SILENT (42.2ms)
+✅ Case #9: 'What is the weather?' -> SILENT (40.0ms)
+✅ Case #10: 'I like pizza' -> SILENT (35.4ms)
+------------------------------------------------------------
+📊 PERFORMANCE REPORT
+   Avg Latency: 57.9 ms
+   P95 Latency: 102.9 ms
+   False Trigger Rate: 0.0% (Target < 15%)
+   Recall: 100.0% (Target > 75%)
+   Intent Accuracy: 4/4
+
+✅ SYSTEM VALIDATED

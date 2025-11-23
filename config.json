@@ -1,0 +1,62 @@
+{
+    "audio": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "chunk_size": 512,
+        "vad_threshold": 0.5,
+        "silence_duration_trigger": 0.7,
+        "comment": "Audio pipeline settings - 16kHz mono required by Distil-Whisper"
+    },
+    "models": {
+        "whisper": {
+            "model_name": "distil-whisper/distil-medium.en",
+            "quantization": "int8",
+            "device": "cpu",
+            "comment": "Speech-to-text model configuration"
+        },
+        "embeddings": {
+            "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+            "dimension": 384,
+            "device": "cpu",
+            "cache_size": 128,
+            "comment": "Embedding model for intent detection and RAG - ~20ms inference on CPU"
+        },
+        "vad": {
+            "model_name": "silero_vad",
+            "comment": "Voice Activity Detection model"
+        }
+    },
+    "cognitive_layer": {
+        "context_window_seconds": 30,
+        "gate1_intent_threshold": 0.40,
+        "gate2_knowledge_threshold": 0.65,
+        "max_processing_latency_seconds": 2.2,
+        "comment": "Two-gate system: Gate 1 filters business relevance, Gate 2 ensures quality answers"
+    },
+    "rag": {
+        "knowledge_base_path": "data/knowledge_base.json",
+        "intent_anchors_path": "data/intent_anchors.json",
+        "faiss_index_path": "data/faiss_index.bin",
+        "top_k_results": 1,
+        "comment": "Retrieval-Augmented Generation settings"
+    },
+    "ui": {
+        "framework": "PyQt6",
+        "position": "top-right",
+        "fade_debounce_ms": 200,
+        "auto_hide_on_speech": true,
+        "feedback_log_path": "logs/feedback_log.csv",
+        "comment": "UI overlay settings with debounce to prevent flicker"
+    },
+    "testing": {
+        "test_audio_path": "data/test_audio.wav",
+        "false_trigger_threshold_percent": 15,
+        "comment": "Testing configuration - aim for <15% false trigger rate"
+    },
+    "logging": {
+        "level": "INFO",
+        "log_path": "logs/salesai.log",
+        "log_interactions": true,
+        "interaction_log_path": "logs/interactions.jsonl"
+    }
+}

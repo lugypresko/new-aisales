@@ -1,0 +1,326 @@
+SALES AI – WEEK 5 TEST SUITE PLAN (Instruction-Only)
+
+Scope: Validate correctness, reliability, deterministic behavior, and safety of the Sales AI MVP.
+
+This test suite includes four layers:
+
+Unit Tests – Validate each module independently.
+
+Integration Tests – Validate logical flows between modules.
+
+End-to-End Tests – Validate a full pipeline run using test audio.
+
+Deterministic Replay + Regression Tests – Ensure changes do not break expected behavior.
+
+This is the exact instruction set needed to implement the test suite.
+
+1. Test Suite Folder Structure (Instruction Only)
+
+Your repo should include:
+
+tests/
+    unit/
+        test_intent_classifier.py
+        test_rag_engine.py
+        test_controller.py
+        test_buffer_manager.py
+        test_logger.py
+    integration/
+        test_audio_pipeline.py
+        test_cognitive_pipeline.py
+        test_controller_to_ui_flow.py
+    e2e/
+        test_full_pipeline.py
+    regression/
+        test_replay_cases.py
+        test_threshold_sensitivity.py
+    fixtures/
+        audio/
+            noise.wav
+            clean_speech.wav
+            mixed_speech.wav
+        json/
+            knowledge_base.json
+            intent_anchors.json
+            anchor_embeddings.json
+            config.json
+
+
+This ensures test isolation and repeatability.
+
+2. Unit Test Instructions (Core Modules)
+
+These are the must-validate critical modules.
+
+2.1 Intent Classifier – Gate 1
+
+Purpose: Detect whether user speech belongs to one of the four core intent classes.
+
+Test Cases to Implement:
+
+Exact Match Test
+Input text that equals anchor text → must map to correct intent.
+
+Paraphrase Test
+Input text semantically equivalent (“What’s the cost?” → Pricing).
+
+Negative Test (Non-business speech)
+Inputs like “Hello?”, “Can you hear me?” → must return None.
+
+Boundary Threshold Test
+Set similarity to exactly the threshold (0.60) → validate inclusivity/exclusivity.
+
+Caching Validation
+Same input twice → ensure embedding function is called once (LRU_CACHE).
+
+Failure Outcome
+
+If any of these fail, Gate 1 is unreliable → system must not proceed to Gate 2.
+
+2.2 RAG Engine – Gate 2
+
+Purpose: Retrieve the closest matching knowledge-base answer.
+
+Test Cases:
+
+Known Query → Correct KB Item
+
+Near Miss Query → Similar but below threshold → Expect NULL
+
+Multiple Close Items → Highest-score wins
+
+Missing KB Item → Expect NULL
+
+FAISS Index Corruption → Expect safe failure with no crash
+
+Performance Metrics:
+
+Query time < 5ms
+
+FAISS load < 10ms
+
+Search returns normalized similarity scores
+
+2.3 Controller – Null Mode
+
+Purpose: Apply the logic:
+Only show hint when: Intent OK + RAG OK + Latency OK
+
+Required Tests:
+
+Intent = None → Expect NULL
+
+RAGscore < threshold → Expect NULL
+
+Total_latency > 2.2s → Expect NULL
+
+All gates pass → Should return a response
+
+Debounce rules enforced
+
+This ensures the system is silent unless highly confident.
+
+2.4 Buffer Manager – 30s Window
+Tests:
+
+Add items → overflow → old items dropped
+
+Time-stamp based pruning
+
+Context retrieval returns correct concatenated text
+
+Stress test: hundreds of inserts → no memory leak
+
+2.5 Logger – Structured Logging
+
+Validate:
+
+JSONL format
+
+Required fields exist
+
+Corrupted log → system continues safely
+
+Highly concurrent writes → no race conditions
+
+3. Integration Test Instructions
+3.1 Audio Pipeline (VAD + Whisper)
+
+Input: noise.wav
+Expected Outcome:
+
+VAD must not trigger speech events
+
+No transcription executed
+
+Input: clean_speech.wav
+Expected:
+
+VAD triggers
+
+Whisper runs
+
+Buffer updated
+
+Latency < 0.6s
+
+3.2 Cognitive Pipeline
+
+Flow:
+Transcript → Intent → RAG → Controller Decision
+
+Test 10 scripted sentences:
+
+Pricing
+
+Technical
+
+Competitor
+
+Next Steps
+
+Noise phrases
+
+Ambiguous sentences
+
+Validate classification correctness and Null Mode behavior.
+
+3.3 Controller → UI Flow
+
+This test does NOT require a PyQt environment.
+
+Use a mock UI connector.
+
+Validate:
+
+Controller triggers UI.show only on valid hints
+
+UI.hide triggered correctly on VAD speech start
+
+Debounce respected (200ms delay)
+
+No duplicate UI events for same cognitive output
+
+4. End-to-End Test Instructions
+
+File: test_full_pipeline.py
+
+Flow:
+
+Stream entire test_audio.wav
+
+Validate:
+
+Speech segments detected
+
+Transcriptions correct
+
+Correct number of hints
+
+First hint appears within 5 minutes
+
+False Trigger Rate < 15%
+
+Log:
+
+Total latency
+
+Per-segment latency
+
+Hit/miss counts
+
+5. Regression / Deterministic Replay Instructions
+5.1 Deterministic Replay Tester
+
+Use a saved recording of:
+
+Transcript
+
+Timestamps
+
+Intent output
+
+RAG output
+
+Controller decisions
+
+Goal:
+Re-run the identical pipeline with new code → outputs must match previous outputs.
+
+If not:
+This build introduces behavioral drift → block release.
+
+5.2 Threshold Sensitivity Testing
+
+Simulate small changes in:
+
+Intent threshold
+
+RAG threshold
+
+Silence duration
+
+Measure sensitivity of:
+
+False triggers
+
+Missed hints
+
+Latency changes
+
+If system behaves unpredictably → thresholds must be re-tuned.
+
+6. Test Execution Rules
+Before Each Release
+
+Run all unit tests
+
+Run all integration tests
+
+Run deterministic replay
+
+Run E2E test with test audio
+
+Verify thresholds and performance metrics
+
+Pass Criteria
+
+All unit tests green
+
+Integration tests green
+
+E2E:
+
+Avg latency < 2.2s
+
+FTR < 15%
+
+Accuracy > 85%
+
+No behavioral drift in replay
+
+7. Why This Test Suite Is Critical
+
+Because:
+
+Your system is real-time
+
+It reacts directly based on audio events
+
+It must ALWAYS be quiet unless confident
+
+Latency & correctness are hard constraints, not preferences
+
+AI behavior must be deterministic, not random
+
+This suite guarantees:
+
+No false triggers during live calls
+
+No embarrassing hallucinations
+
+Stable behavior across code changes
+
+Safety and predictability in stressful real-time environments
+
+This is exactly how you prevent “engineering chaos,” protect the user experience, and maintain trust.
