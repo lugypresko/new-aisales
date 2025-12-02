@@ -1,0 +1,65 @@
+Senior Product Manager, Autonomous Squad
+Tel Aviv, Israel | Product | Full-time
+Not your everyday company
+Lemonade completely reinvented how insurance works. As a customer-centric tech company, we created an insurance experience that is smart, instant, and delightful.
+
+At Lemonade, you’ll be working with a group of like-minded makers, who get a kick out of moving fast and delivering great products. We surround ourselves with some of the smartest, most motivated, creative people who are filled with positive energy and good karma.
+
+Unlike most publicly traded companies, we’re nimble and efficient. We take pride in the fact that we still think and operate like a startup. We don’t care much about titles and hierarchy and instead focus on innovation, bold moves, and challenging the status quo.
+
+We’re built as a lean, data-driven organization that relies on a common understating of objectives and goals to provide teams with autonomy and ownership. We don’t like spending our days in meetings and we skip committees altogether. At Lemonade, there’s no such thing as going over someone’s head. We have zero tolerance for bureaucracy, office politics, and lean-back personalities.
+
+As a Public Benefit Corporation and a certified B-Corp, we deliver environmental and social impact using our products and tech. Through our Giveback program, we partner with organizations such as the ACLU, New Story, The Humane Society, Malala Fund, American Red Cross, 360.org, charity: water, and dozens of others, and have donated millions towards reforestation, education, animal rights, LGBTQ+ causes, access to water, and more.
+
+Awarded ‘best workplace’
+Awarded ‘best workplace’
+Best Workplace and Best-Led Company by Inc. Magazine
+“World Changing” by Fast Company
+“World Changing” by Fast Company
+Recognized as a World Changing Idea by Fast Company Magazine
+Ranked #1 Home insurance in America
+Ranked #1 Home insurance in America
+Won best renters and homeowners insurance in America by US News, and others
+Best Pet Insurance in America
+Best Pet Insurance in America
+Rated “Best Overall Pet Insurance” by Better Homes & Gardens
+Rated 4.9 ⭐ on the App Store
+Rated 4.9 ⭐ on the App Store
+Among the highest rated apps of all time
+What you’re applying for
+We're looking for an Autonomous Product Manager to supercharge efficiency across Lemonade's internal teams. If you love turning messy, multi-team processes into elegant, automated workflows with GenAI and agentic systems and you enjoy shipping pragmatic solutions that measurably reduce cycle time and operational cost this role is perfect for you.
+
+In this role you'll:
+Own cross-company automation initiatives end-to-end from discovery and scoping through MVP, rollout, and continuous improvement
+
+Map complex processes and identify leverage points for automation and assisted workflows
+
+Leverage Lemonade's GenAI and automation platforms (like n8n) to build and deploy agent-based products, taking them from concept to full production
+
+Operate in a microsquad leveraging existing platforms and your hands-on skills to deliver products from early POC to working solutions in production
+
+Instrument everything define baselines, ship dashboards, and track impact (hours saved, cycle time, accuracy rates, SLA adherence, auditability)
+
+Shepherd change management with stakeholders through crisp docs, training sessions, feedback loops, and landing new ways of working
+
+Partner deeply with engineering, data, and design teams to prioritize the highest-ROI bets and de-risk launches
+
+What you'll need:
+5+ years as a product manager in successful startups or fast-growing companies
+
+Hands-on experience building GenAI applications and automation frameworks (Flowise, n8n, etc.)
+
+Self-organized and process-driven approach with excellent leadership skills
+
+Ability to understand complex processes and spot improvement opportunities
+
+Data-driven analytical thinking with perfect English and communication skills
+
+Experience leading small, agile teams and a passion for continuous learning
+
+Ability to work in our Tel Aviv office a minimum of 3 days a week
+
+Enthusiasm about learning and adapting to the exciting world of AI – a commitment to exploring this field is a fundamental part of our culture
+
+Things to know…
+Lemonade is an equal opportunity employer committed to diversity and inclusivity. We never discriminate on the basis of race, national origin, gender, gender identity, sexual orientation, protected veteran status, disability, age, or other legally protected status. If you require reasonable accommodations due to religious beliefs, pregnancy, or disabilities, let us know at any time.

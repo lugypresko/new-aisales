@@ -50,6 +50,11 @@ class PipelineThread(QThread):
                 text = transcriber.transcribe(audio_segment)
                 
                 if text:
+                    # Show what was heard
+                    print(f"\n{'='*60}")
+                    print(f"🎤 HEARD: {text}")
+                    print(f"{'='*60}\n")
+                    
                     # 2. Update Buffer
                     buffer_manager.add_segment(text)
                     
@@ -57,8 +62,15 @@ class PipelineThread(QThread):
                     decision = controller.process(text, start_time)
                     
                     if decision:
+                        print(f"💡 ACTION: {decision.get('action')}")
+                        if decision.get('action') == 'SPEAK':
+                            print(f"📊 Intent: {decision.get('intent_category')} (score: {decision.get('intent_score'):.3f})")
+                            print(f"💬 Suggestion: {decision.get('response_text')[:100]}...")
+                        print()
                         # Emit signal to UI
                         self.decision_made.emit(decision)
+                    else:
+                        print(f"🤐 Staying silent (not business-relevant)\n")
                         
         except Exception as e:
             print(f"❌ Pipeline Error: {e}")

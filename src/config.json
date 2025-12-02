@@ -3,7 +3,7 @@
         "sample_rate": 16000,
         "channels": 1,
         "chunk_size": 512,
-        "vad_threshold": 0.5,
+        "vad_threshold": 0.3,
         "silence_duration_trigger": 0.7,
         "comment": "Audio pipeline settings - 16kHz mono required by Distil-Whisper"
     },

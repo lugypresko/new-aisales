@@ -1,0 +1,10 @@
+{
+    "sample_rate": 16000,
+    "gate1_intent_threshold": 0.60,
+    "gate2_knowledge_threshold": 0.75,
+    "max_processing_latency_seconds": 2.2,
+    "context_window_seconds": 30,
+    "logging": {
+        "interaction_log_path": "tests/logs/test_interactions.jsonl"
+    }
+}
