@@ -12,10 +12,13 @@ def test_controller_null_mode_intent(controller):
 
 def test_controller_null_mode_rag(controller):
     """Test that Controller returns None if RAG score is low."""
-    # Mock Intent OK, but RAG Low
+    # The Gate-2 threshold is enforced inside RAGEngine.search: below
+    # threshold it returns (None, score). The previous mock returned an item
+    # with a low score, which violates that contract (the real engine never
+    # does this). Mock Intent OK, RAG below threshold -> (None, 0.4).
     controller.intent_classifier.classify = MagicMock(return_value=("Pricing", 0.9))
-    controller.rag_engine.search = MagicMock(return_value=({"response_text": "foo", "category": "Pricing"}, 0.4))
-    
+    controller.rag_engine.search = MagicMock(return_value=(None, 0.4))
+
     decision = controller.process("How much?", time.time())
     assert decision is None
 

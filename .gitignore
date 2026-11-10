@@ -1,12 +1,3 @@
-node_modules/
-venv/
+tests/logs/
 __pycache__/
-.env
-*.log
-dist/
-build/
-.vscode/
-.idea/
-.sync.lock
-bin/
-obj/
+*.pyc

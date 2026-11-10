@@ -20,7 +20,7 @@ The entry point is [`src/main_pipeline.py`](src/main_pipeline.py). It supports a
 
 - **Python integration:** streaming input, transcription, buffering and controller orchestration in the main pipeline.
 - **Retrieval and decisions:** inspect [`src/cognitive/`](src/cognitive/) for the RAG engine, intent classifier and controller.
-- **Test organization:** [`tests/`](tests/) includes unit, integration, regression, end-to-end and fixture directories.
+- **Test organization:** [`tests/unit/`](tests/unit/) holds 11 implemented unit tests (controller, intent classifier, RAG engine). `tests/integration/`, `tests/regression/` and `tests/e2e/` are empty placeholders for now — no tests exist there yet.
 - **Test fixtures:** [`tests/conftest.py`](tests/conftest.py) defines pytest fixtures for the controller, RAG engine, classifier and logger.
 
 ## Inspect / verify
@@ -31,7 +31,7 @@ The entry point is [`src/main_pipeline.py`](src/main_pipeline.py). It supports a
 4. To inspect the entry point, run `python -m src.main_pipeline --help`.
 5. A real audio test may require local audio libraries, model assets and external credentials.
 
-**Verification status:** tests and end-to-end execution have **not** been run as part of this documentation update. Passing CI, accuracy and latency are not claimed.
+**Verification status:** `python -m pytest tests/` was run on 2026-11-10 (Python 3.10, CPU, `sentence-transformers/all-MiniLM-L6-v2`, faiss-cpu): **11 passed, 0 failed**. Live microphone, audio transcription and end-to-end execution were not run; accuracy and latency in production are not claimed.
 
 ## Design discussion
 
