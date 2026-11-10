@@ -66,18 +66,26 @@ class IntentClassifier:
         best_intent = None
         best_score = -1.0
         
-        # Compare with anchors
+        # Compare with anchors.
+        # New format: 'embeddings' holds one vector per anchor text and we
+        # max-pool over them. Averaging anchors into a single vector dilutes
+        # each phrasing, so genuine paraphrases fell below the gate threshold.
+        # Legacy format: single averaged 'embedding' (kept as fallback).
         for intent, data in self.anchors.items():
-            anchor_vec = np.array(data['embedding'])
-            
-            # Cosine Similarity
-            score = np.dot(embedding, anchor_vec) / (
-                np.linalg.norm(embedding) * np.linalg.norm(anchor_vec)
-            )
-            
-            if score > best_score:
-                best_score = score
-                best_intent = intent
+            vectors = data.get('embeddings')
+            if not vectors:
+                vectors = [data['embedding']]
+            for vec in vectors:
+                anchor_vec = np.array(vec)
+
+                # Cosine Similarity
+                score = np.dot(embedding, anchor_vec) / (
+                    np.linalg.norm(embedding) * np.linalg.norm(anchor_vec)
+                )
+
+                if score > best_score:
+                    best_score = score
+                    best_intent = intent
                 
         if best_score >= self.threshold:
             return best_intent, float(best_score)

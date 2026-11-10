@@ -6,7 +6,8 @@
             "What's the price?",
             "That's too expensive",
             "Do you have discounts?",
-            "What's your pricing model?"
+            "What's your pricing model?",
+            "Do you offer discounts?"
         ],
         "description": "Questions about cost, pricing, discounts, and budget concerns"
     },
@@ -17,7 +18,9 @@
             "How does it work technically?",
             "What about data privacy?",
             "Does it integrate with our systems?",
-            "What's the uptime guarantee?"
+            "What's the uptime guarantee?",
+            "Is your platform secure?",
+            "Is our data safe with you?"
         ],
         "description": "Technical questions about security, integrations, implementation, and reliability"
     },

@@ -15,7 +15,10 @@ import time
 
 def load_config():
     """Load configuration."""
+    # config.json lives under src/; keep repo-root path working if it appears
     config_path = Path(__file__).parent.parent / "config.json"
+    if not config_path.exists():
+        config_path = Path(__file__).parent.parent / "src" / "config.json"
     with open(config_path, 'r') as f:
         return json.load(f)
 
@@ -54,6 +57,10 @@ def compute_anchor_embeddings(model, anchors):
         avg_embedding = np.mean(embeddings, axis=0)
         
         anchor_embeddings[intent] = {
+            # Per-anchor vectors: the classifier max-pools over these.
+            'embeddings': [e.tolist() for e in embeddings],
+            'anchor_texts': texts,
+            # Legacy averaged vector, kept for backward compatibility.
             'embedding': avg_embedding.tolist(),
             'dimension': len(avg_embedding),
             'num_anchors': len(texts)
@@ -69,8 +76,15 @@ def build_faiss_index(model, knowledge_base, config):
     """
     print(f"\nBuilding FAISS index for {len(knowledge_base)} knowledge items...")
     
-    # Extract trigger texts
-    trigger_texts = [item['trigger_text'] for item in knowledge_base]
+    # Extract trigger texts plus paraphrases; remember which KB item each
+    # vector belongs to so the engine can map a hit back to the item.
+    trigger_texts = []
+    index_map = []
+    for i, item in enumerate(knowledge_base):
+        triggers = [item['trigger_text']] + item.get('trigger_paraphrases', [])
+        for t in triggers:
+            trigger_texts.append(t)
+            index_map.append(i)
     
     # Compute embeddings
     start_time = time.time()
@@ -91,7 +105,7 @@ def build_faiss_index(model, knowledge_base, config):
     
     print(f"✅ FAISS index built with {index.ntotal} vectors (dimension={dimension})")
     
-    return index, embeddings
+    return index, embeddings, index_map
 
 
 def save_anchor_embeddings(anchor_embeddings, output_path):
@@ -176,11 +190,14 @@ def main():
     print("\n" + "="*60)
     print("STEP 2: Building FAISS Index (Gate 2)")
     print("="*60)
-    index, embeddings = build_faiss_index(model, knowledge_base, config)
+    index, embeddings, index_map = build_faiss_index(model, knowledge_base, config)
     
-    # Save FAISS index
+    # Save FAISS index and its vector->item map
     faiss_output = output_dir / "faiss_index.bin"
     save_faiss_index(index, faiss_output)
+    with open(output_dir / "faiss_index_map.json", 'w') as f:
+        json.dump(index_map, f)
+    print(f"✅ FAISS index map saved to: {output_dir / 'faiss_index_map.json'}")
     
     # Validation
     validate_embeddings(model, anchor_embeddings, knowledge_base)

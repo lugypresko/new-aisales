@@ -25,6 +25,10 @@ class RAGEngine:
         # Load Knowledge Base & Index
         self.kb = self._load_knowledge_base()
         self.index = self._load_faiss_index()
+        # Maps FAISS vector position -> knowledge_base item index.
+        # Present when the index embeds multiple triggers per item
+        # (trigger_text + trigger_paraphrases); identity mapping otherwise.
+        self.index_map = self._load_index_map()
         print(f"✅ RAG Engine Ready ({len(self.kb)} items loaded)")
 
     def _load_config(self, config_path: str) -> Dict:
@@ -61,6 +65,16 @@ class RAGEngine:
             print(f"❌ Error loading FAISS index: {e}")
             return None
 
+    def _load_index_map(self):
+        try:
+            path = Path(__file__).parent.parent.parent / "data" / "faiss_index_map.json"
+            if path.exists():
+                with open(path, 'r') as f:
+                    return json.load(f)
+        except Exception as e:
+            print(f"❌ Error loading FAISS index map: {e}")
+        return None
+
     def search(self, text: str) -> Tuple[Optional[Dict], float]:
         """
         Search for the best matching knowledge item.
@@ -79,9 +93,14 @@ class RAGEngine:
         score = float(distances[0][0])
         idx = int(indices[0][0])
         
+        if self.index_map is not None:
+            if idx < 0 or idx >= len(self.index_map):
+                return None, score
+            idx = self.index_map[idx]
+
         if idx < 0 or idx >= len(self.kb):
             return None, score
-            
+
         result = self.kb[idx]
         
         if score >= self.threshold:
